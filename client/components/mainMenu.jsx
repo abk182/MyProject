@@ -1,8 +1,8 @@
 import React from 'react';
 
-export   const MainMenu = () =>(
-    <ul className="main-menu">
-        <li> MenuItem1 </li>
-        <li> MenuItem2</li>
+export const MainMenu = () =>(
+    <ul className="main-menu nav-tabs">
+        <li> Menubtn1</li>
+        <li> Menubtn2</li>
     </ul>
 );

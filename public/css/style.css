@@ -1,0 +1,8 @@
+.main-menu li{
+    display: inline;
+    list-style: none;
+}
+
+.item{
+    border:1px solid lightsteelblue;
+}
