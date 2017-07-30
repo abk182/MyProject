@@ -1,11 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Provider from 'react-redux';
-import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { BrowserRouter, Route, Match } from 'react-router-dom';
+import thunk from 'redux-thunk';
 
-import MainApp from './components/mainApp.jsx'
+import MainPage from './components/mainPage.jsx';
+import ItemPage from './components/itemPage.jsx';
+import * as reducers from'./reducers/reducer.js';
+
+const store = createStore(combineReducers(reducers),applyMiddleware(thunk));
+// console.log('Store init: ',store.getState());
 
 ReactDOM.render(
-    <MainApp/>,
-    document.getElementById('root')
+    <Provider store={store}>
+        <BrowserRouter>
+            <div>
+                <Route exact path ='/' component = {MainPage}/>
+                <Route path ='/item:id' component = {ItemPage}/>
+                <hr/>
+            </div>
+        </BrowserRouter>
+    </Provider>
+    ,document.getElementById('root')
 );
+
+store.subscribe(()=> console.log('Store subscribe: ',store.getState()));
