@@ -5,10 +5,4 @@
 
 .item{
     border:1px solid lightsteelblue;
-    padding:0px;
-}
-
-.item-name, .item-price{
-    text-align: center;
-    margin:0;
 }

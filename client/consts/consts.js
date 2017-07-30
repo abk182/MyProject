@@ -3,3 +3,7 @@ export const GET_ITEMS = {
     GET_ITEMS_SUCCESS:"GET_ITEMS_SUCCESS",
     GET_ITEMS_ERROR:"GET_ITEMS_ERROR"
 };
+
+export const ITEM_SELECT = {
+    ITEM_SELECT:"ITEM_SELECT"
+}

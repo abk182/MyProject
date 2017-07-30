@@ -18,7 +18,6 @@ ReactDOM.render(
             <div>
                 <Route exact path ='/' component = {MainPage}/>
                 <Route path ='/item:id' component = {ItemPage}/>
-                <hr/>
             </div>
         </BrowserRouter>
     </Provider>

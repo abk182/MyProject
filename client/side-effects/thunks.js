@@ -1,4 +1,4 @@
-import { getItemsListRequest } from "../requests/requests"
+import { getItemsListRequest, } from "../requests/requests"
 
 export const thunkItemsList = () => {
     return (
@@ -7,4 +7,5 @@ export const thunkItemsList = () => {
         }
     )
 };
+
 

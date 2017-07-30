@@ -1,4 +1,4 @@
-import { GET_ITEMS } from "../consts/consts";
+import { GET_ITEMS, ITEM_SELECT } from "../consts/consts";
 
 export const ItemsList = (state=[],action)=>{
     console.log(action);
@@ -11,12 +11,14 @@ export const ItemsList = (state=[],action)=>{
 
 export const SelectedItem = (state={}, action) =>{
     switch (action.type){
+        case ITEM_SELECT.ITEM_SELECT: return  Object.assign({},action.Item);
         default: return state;
     }
 };
 
 export const Cart = (state=[], action) =>{
     switch (action.type){
+
         default: return state;
     }
 };
