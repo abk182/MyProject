@@ -1,24 +1,25 @@
-import { GET_ITEMS, ITEM_SELECT } from "../consts/consts";
+import { ITEMS, CART } from "../consts/consts";
 
-export const ItemsList = (state=[],action)=>{
-    console.log(action);
+export const state = (state, action) => {console.log(state,action); return {}};
+
+export const ItemsList = (state,action)=>{
     switch (action.type){
-        case GET_ITEMS.GET_ITEMS_SUCCESS: return Object.assign([],action.ItemsList);
-        case GET_ITEMS.GET_ITEMS_ERROR: return state;
-        default: return state;
+        case ITEMS.GET_ITEMS_SUCCESS: return Object.assign([],action.ItemsList);
+        case ITEMS.GET_ITEMS_ERROR: return state;
+        default: return state || [];
     }
 };
 
-export const SelectedItem = (state={}, action) =>{
+export const SelectedItem = (state, action) =>{
     switch (action.type){
-        case ITEM_SELECT.ITEM_SELECT: return  Object.assign({},action.Item);
-        default: return state;
+        case ITEMS.ITEM_SELECT: return  Object.assign({},action.Item);
+        default: return state || {};
     }
 };
 
-export const Cart = (state=[], action) =>{
+export const Cart = (state, action) =>{
     switch (action.type){
-
-        default: return state;
+        case CART.CART_ADD: return Object.assign([],state,state.push(action.Item));
+        default: return state || [];
     }
 };

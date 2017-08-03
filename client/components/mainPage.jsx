@@ -4,14 +4,15 @@ import { connect } from 'react-redux';
 import { MainMenu } from './mainMenu.jsx';
 import { Catalogue } from './catalogue.jsx';
 import { thunkItemsList } from "../side-effects/thunks";
-import { selectItem } from '../actions/actions.js'
+import { selectItem, cartAdd } from '../actions/actions.js'
 
 
-const mapStateToProps = (state)=>(state);
+const mapStateToProps = ({ItemsList})=>({ItemsList});
 
 const mapDispatchToProps = dispatch => ({
     getItemsList: ()=> dispatch(thunkItemsList()),
-    selectItem: (item)=> dispatch(selectItem.select(item))
+    selectItem: (item)=> dispatch(selectItem.select(item)),
+    cartAdd: (item) => dispatch(cartAdd.add(item))
 });
 
 
@@ -24,6 +25,7 @@ class MainPage extends React.Component{
     }
 
     render() {
+        console.log(this.props);
         return (
             <div className="container" >
                 <MainMenu/>

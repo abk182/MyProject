@@ -1,11 +1,15 @@
-import { GET_ITEMS,ITEM_SELECT } from "../consts/consts.js";
+import { ITEMS, CART } from "../consts/consts.js";
 
 export const getItemsList = {
     // pending: ()=>({type:GET_ITEMS.GET_ITEMS_PENDING}),
-    success: (ItemsList)=>({type:GET_ITEMS.GET_ITEMS_SUCCESS, ItemsList}),
-    error: (error)=>({type:GET_ITEMS.GET_ITEMS_ERROR, error})
+    success: (ItemsList)=>({type:ITEMS.GET_ITEMS_SUCCESS, ItemsList}),
+    error: (error)=>({type:ITEMS.GET_ITEMS_ERROR, error})
 };
 
 export const selectItem = {
-    select: (Item)=> ({type:ITEM_SELECT.ITEM_SELECT, Item})
+    select: (Item)=> ({type:ITEMS.ITEM_SELECT, Item})
+};
+
+export const cartAdd = {
+    add: (Item)=> ({type:CART.CART_ADD, Item})
 };

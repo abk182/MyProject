@@ -1,10 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { cartAdd } from "../actions/actions";
 
-const mapStateToProps = state => (state);
 
-const mapDispatchToProps = dispatch => ({});
+const mapStateToProps = ({SelectedItem}) => ({SelectedItem});
+
+const mapDispatchToProps = dispatch => ({
+    cartAdd: (item) => dispatch(cartAdd.add(item))
+});
 
 
 class ItemPage extends React.Component{
@@ -24,7 +28,9 @@ class ItemPage extends React.Component{
                         <p>{this.props.SelectedItem.name}</p>
                         <p>{this.props.SelectedItem.price}</p>
                     </div>
+
                 </div>
+                <button className="btn col" onClick={()=> this.props.cartAdd(this.props.SelectedItem)}> В корзину </button>
           </div>
         )
     }
