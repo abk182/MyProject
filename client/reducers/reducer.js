@@ -1,7 +1,5 @@
 import { ITEMS, CART } from "../consts/consts";
 
-export const state = (state, action) => {console.log(state,action); return {}};
-
 export const ItemsList = (state,action)=>{
     switch (action.type){
         case ITEMS.GET_ITEMS_SUCCESS: return Object.assign([],action.ItemsList);

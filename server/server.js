@@ -1,14 +1,15 @@
 const express = require('express');
 const path = require('path');
+const db = require('./database');
+const app = express();
 
-express()
-    .use('/',express.static(path.join(__dirname,'../public')))
-    .get('/items', require('./routes/itemsList'))
-    .get('*', (req, res) => {
+
+app.use('/',express.static(path.join(__dirname,'../public')));
+app.get('/items', require('./routes/itemsList'));
+app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../public/index.html'))
-
-    })
-    .listen(3000, function () {
-        console.log('Start on 3000');
     });
 
+db.connect(()=>{
+    app.listen(3000, console.log('Start 3000'))
+});

@@ -1,5 +1,6 @@
 const express = require('express'),
-    router = express.Router();
+    router = express.Router(),
+    itemsDb = require('../models/itemsDb');
 
 let hardcode =[
     {
@@ -29,8 +30,13 @@ let hardcode =[
 ];
 
 
-router.get('/items', (req,res)=>{
-    res.send(hardcode);
+router.get('/items', async(req,res)=>{
+    try{
+        let response = await itemsDb.getItems()
+        console.log('res',response);
+        res.send(response);
+    }
+    catch(err){console.log(err)}
 });
 
 //момент для уточнения
