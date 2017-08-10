@@ -33,8 +33,15 @@ let hardcode =[
 router.get('/items', async(req,res)=>{
     try{
         let response = await itemsDb.getItems()
-        console.log('res',response);
         res.send(response);
+    }
+    catch(err){console.log(err)}
+});
+
+router.get('/selectedItem/:id',async(req,res)=>{
+    try{
+        let response = await itemsDb.getSelectedItem(req.params['id']);
+        res.send(response[0]);
     }
     catch(err){console.log(err)}
 });

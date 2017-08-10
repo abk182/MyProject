@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { getItemsList } from '../actions/actions.js';
+import { getItemsList,selectItem } from '../actions/actions.js';
 
 //старый запрос(на всякий)
 // export const getItemsListRequest=(dispatch)=> {
@@ -22,3 +22,12 @@ export const getItemsListRequest= async(dispatch)=> {
         dispatch(getItemsList.error(err));
     }
 };
+
+export const selectedItemRequest= async(dispatch, id)=> {
+    try{
+        let response = await axios.get(`/selectedItem/${id}`);
+        dispatch(selectItem.select(response.data))
+    }
+    catch(err){console.log(err)}
+};
+

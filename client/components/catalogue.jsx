@@ -2,14 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 //тупой каталог
-export const Catalogue = ({props}) => {
+export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
     return(
         <div className="catalogue row">
             {
-                props.ItemsList.map((item,index) => {
+                ItemsList.map((item,index) => {
                     return(
                         <div className="item col-md-3 col-sm-6 " key={item.id}>
-                            <Link to ={`/item/${item.id}`} className="d-block link" onClick={(e)=>props.selectItem(item)}>
+                            <Link to ={`/item/${item.id}`} className="d-block link" >
                                 <img src={item.img} className="item-img img-fluid" />
                                 <div className="item-info">
                                 <p className="item-name">{item.name}</p>
@@ -17,7 +17,7 @@ export const Catalogue = ({props}) => {
                                 </div>
                             </Link>
                             <button id={item.id} className="cart-btn btn btn-block btn-sm"
-                                    onClick={(e)=>props.cartAdd(item)}>В корзину</button>
+                                    onClick={(e)=>cartAdd(item)}>В корзину</button>
                         </div>
                     )
                 })
