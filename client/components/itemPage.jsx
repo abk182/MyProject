@@ -23,7 +23,7 @@ class ItemPage extends React.Component{
     }
 
     componentDidMount(){
-        this.props.thunkSelectedItem(this.props.itemID);
+        if (!this.props.SelectedItem.id) this.props.thunkSelectedItem(this.props.itemID);
     }
 
     render() {

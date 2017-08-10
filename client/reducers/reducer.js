@@ -9,6 +9,7 @@ export const ItemsList = (state,action)=>{
 };
 
 export const SelectedItem = (state, action) =>{
+    console.log(action);
     switch (action.type){
         case ITEMS.ITEM_SELECT: return  Object.assign({},action.Item);
         default: return state || {};

@@ -11,8 +11,8 @@ const mapStateToProps = ({ItemsList})=>({ItemsList});
 
 const mapDispatchToProps = dispatch => ({
     getItemsList: ()=> dispatch(thunkItemsList()),
-    cartAdd: (item) => dispatch(cartAdd.add(item)),
-    selectItem: (item) => dispatch(selectItem.select(Item))
+    cartAdd: (Item) => dispatch(cartAdd.add(Item)),
+    selectItem: (Item) => dispatch(selectItem.select(Item))
 });
 
 
