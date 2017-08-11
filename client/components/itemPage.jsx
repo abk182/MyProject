@@ -33,7 +33,7 @@ class ItemPage extends React.Component{
                 <nav className="nav-tabs">Кнопка меню</nav>
                 <div className="row">
                     <div className="col">
-                        <img className="img-fluid" src={this.props.SelectedItem.img}/>
+                        <img className="img-fluid" src={"../img/" + this.props.SelectedItem.img}/>
                     </div>
                     <div className="col-4">
                         <p>{this.props.SelectedItem.name}</p>

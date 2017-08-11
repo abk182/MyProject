@@ -32,7 +32,7 @@ let hardcode =[
 
 router.get('/items', async(req,res)=>{
     try{
-        let response = await itemsDb.getItems()
+        let response = await itemsDb.getItems();
         res.send(response);
     }
     catch(err){console.log(err)}

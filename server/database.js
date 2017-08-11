@@ -17,7 +17,6 @@ module.exports = {
         });
 
         state.database = connection;
-
         done();
     },
     get: () => (state.database)

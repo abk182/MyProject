@@ -10,7 +10,7 @@ export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
                     return(
                         <div className="item col-md-3 col-sm-6 " key={item.id}>
                             <Link to ={`/item/${item.id}`} className="d-block link" onClick={(e)=>selectItem(item)}>
-                                <img src={item.img} className="item-img img-fluid" />
+                                <img src={"img/" + item.img} className="item-img img-fluid" />
                                 <div className="item-info">
                                 <p className="item-name">{item.name}</p>
                                 <p className="item-price">Цена: {item.price} руб.</p>
