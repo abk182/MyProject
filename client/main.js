@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import MainPage from './components/mainPage.jsx';
 import ItemPage from './components/itemPage.jsx';
-import CartPage from './components/cartPage.jsx'
+import CartPage from './components/cartPage.jsx';
 import * as reducers from'./reducers/reducer.js';
 
 const store = createStore(combineReducers(reducers),applyMiddleware(thunk));

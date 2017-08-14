@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { MainMenu } from './mainMenu.jsx';
 import { Catalogue } from './catalogue.jsx';
 import { thunkItemsList } from "../side-effects/thunks";
 import { cartAdd, selectItem } from '../actions/actions.js'
@@ -28,7 +28,11 @@ class MainPage extends React.Component{
         console.log(this.props);
         return (
             <div className="container" >
-                <MainMenu/>
+                <nav className="main-menu nav-tabs">
+                    <li>Выбор каталога | </li>
+                    <li>Еще какая-нибудь кнопка </li>
+                    <Link to="/cart"> Корзина </Link>
+                </nav>
                 <Catalogue
                     ItemsList={this.props.ItemsList}
                     cartAdd={this.props.cartAdd}

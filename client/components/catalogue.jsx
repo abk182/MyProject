@@ -16,7 +16,7 @@ export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
                                 <p className="item-price">Цена: {item.price} руб.</p>
                                 </div>
                             </Link>
-                            <button id={item.id} className="cart-btn btn btn-block btn-sm"
+                            <button type="button" id={item.id} className="cart-btn btn btn-secondary btn-sm"
                                     onClick={(e)=>cartAdd(item)}>В корзину</button>
                         </div>
                     )
