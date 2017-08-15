@@ -10,6 +10,6 @@ export const selectItem = {
     select: (Item)=> ({type:ITEMS.ITEM_SELECT, Item})
 };
 
-export const cartAdd = {
-    add: (Item)=> ({type:CART.CART_ADD, Item})
+export const cart = {
+    add: (ItemsList)=> ({type:CART.CART_ADD, ItemsList})
 };

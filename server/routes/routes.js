@@ -2,6 +2,37 @@ const express = require('express'),
     router = express.Router(),
     itemsDb = require('../models/itemsDb');
 
+let cartItems = []
+
+router.get('/items', async(req,res)=>{
+    try{
+        let response = await itemsDb.getItems();
+        res.send(response);
+    }
+    catch(err){console.log(err)}
+});
+
+router.get('/selectedItem/:id',async(req,res)=>{
+    try{
+        let response = await itemsDb.getSelectedItem(req.params['id']);
+        res.send(response[0]);
+    }
+    catch(err){console.log(err)}
+});
+
+router.post('/cartAdd', async(req,res)=>{
+    try{
+        let response = await itemsDb.getSelectedItem(req.body.id);
+        cartItems.push(response[0]);
+        res.send(cartItems);
+    }
+    catch(err){console.log(err)}
+});
+
+//момент для уточнения
+module.exports= router;
+
+
 let hardcode =[
     {
         id:1,
@@ -29,22 +60,3 @@ let hardcode =[
     }
 ];
 
-
-router.get('/items', async(req,res)=>{
-    try{
-        let response = await itemsDb.getItems();
-        res.send(response);
-    }
-    catch(err){console.log(err)}
-});
-
-router.get('/selectedItem/:id',async(req,res)=>{
-    try{
-        let response = await itemsDb.getSelectedItem(req.params['id']);
-        res.send(response[0]);
-    }
-    catch(err){console.log(err)}
-});
-
-//момент для уточнения
-module.exports= router;

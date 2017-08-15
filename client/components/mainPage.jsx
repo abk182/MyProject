@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { Catalogue } from './catalogue.jsx';
-import { thunkItemsList } from "../side-effects/thunks";
-import { cartAdd, selectItem } from '../actions/actions.js'
+import { thunkItemsList, thunkCartAdd } from "../side-effects/thunks";
+import { selectItem } from '../actions/actions.js'
 
 
 const mapStateToProps = ({ItemsList})=>({ItemsList});
 
 const mapDispatchToProps = dispatch => ({
     getItemsList: ()=> dispatch(thunkItemsList()),
-    cartAdd: (Item) => dispatch(cartAdd.add(Item)),
+    cardAdd: (id) => dispatch(thunkCartAdd(id)),
     selectItem: (Item) => dispatch(selectItem.select(Item))
 });
 
@@ -35,7 +35,7 @@ class MainPage extends React.Component{
                 </nav>
                 <Catalogue
                     ItemsList={this.props.ItemsList}
-                    cartAdd={this.props.cartAdd}
+                    cartAdd={this.props.cardAdd}
                     selectItem={this.props.selectItem}
                 />
             </div>

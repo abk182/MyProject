@@ -24,7 +24,7 @@ class CartPage extends React.Component{
                                     <div key={index}>
                                         <p>{item.name}</p>
                                         <p>{item.price}</p>
-                                        <img className="img-fluid col-6" src={item.img}/>
+                                        <img className="img-fluid col-6" src={"../img/"+item.img}/>
                                     </div>
                                 )
                             }) : 'Корзина пуста' }

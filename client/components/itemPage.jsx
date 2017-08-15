@@ -2,9 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { cartAdd,selectItem } from "../actions/actions";
-import { thunkSelectedItem } from "../side-effects/thunks";
-
+import { thunkSelectedItem, thunkCartAdd } from "../side-effects/thunks";
 
 const mapStateToProps = ({SelectedItem},params) => ({
     SelectedItem,
@@ -13,7 +11,7 @@ const mapStateToProps = ({SelectedItem},params) => ({
 
 const mapDispatchToProps = dispatch => ({
     thunkSelectedItem: (id)=> dispatch(thunkSelectedItem(id)),
-    cartAdd: (item) => dispatch(cartAdd.add(item)),
+    cartAdd: (id) => dispatch(thunkCartAdd(id)),
 });
 
 
@@ -40,7 +38,7 @@ class ItemPage extends React.Component{
                         <p>{this.props.SelectedItem.price}</p>
                     </div>
                 </div>
-                <button className="btn col" onClick={()=> this.props.cartAdd(this.props.SelectedItem)}> В корзину </button>
+                <button className="btn col" onClick={()=> this.props.cartAdd(this.props.SelectedItem.id)}> В корзину </button>
           </div>
         )
     }

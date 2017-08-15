@@ -6,7 +6,7 @@ export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
     return(
         <div className="catalogue row">
             {
-                ItemsList.map((item,index) => {
+                ItemsList.map(item => {
                     return(
                         <div className="item col-md-3 col-sm-6 " key={item.id}>
                             <Link to ={`/item/${item.id}`} className="d-block link" onClick={(e)=>selectItem(item)}>
@@ -17,7 +17,7 @@ export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
                                 </div>
                             </Link>
                             <button type="button" id={item.id} className="cart-btn btn btn-secondary btn-sm"
-                                    onClick={(e)=>cartAdd(item)}>В корзину</button>
+                                    onClick={(e)=>cartAdd(item.id)}>В корзину</button>
                         </div>
                     )
                 })

@@ -2,11 +2,17 @@ const express = require('express');
 const path = require('path');
 const db = require('./database');
 const app = express();
+const bodyParer = require('body-parser');
 
-
+app.use(bodyParer.json());
+app.use(bodyParer.urlencoded({extended: true}));
 app.use('/',express.static(path.join(__dirname,'../public')));
+
 app.get('/items', require('./routes/routes'));
 app.get('/selectedItem/:id', require('./routes/routes'));
+app.post('/cartAdd', require('./routes/routes'));
+
+
 app.get('*', (req, res) => {
         res.sendFile(path.join(__dirname, '../public/index.html'))
     });
