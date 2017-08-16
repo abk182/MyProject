@@ -29,6 +29,27 @@ router.post('/cartAdd', async(req,res)=>{
     catch(err){console.log(err)}
 });
 
+router.post('/file', (req, res) => {
+
+
+  console.log(req.body);
+  let storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, path.join(__dirname, '../../public/img/'));
+    },
+    filename: function (req, file, cb) {
+      console.log(file)
+      cb(null, file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/')[1])
+    }
+  })
+
+  let upload = multer({storage}).any()
+
+  upload(req, res, err => {
+    res.send({status: 'ok'})
+  })
+
+})
 //момент для уточнения
 module.exports= router;
 
@@ -59,4 +80,3 @@ let hardcode =[
         img:"http://www.kickassbmx.com/images/total_crank2.jpg"
     }
 ];
-

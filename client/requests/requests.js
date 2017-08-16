@@ -1,6 +1,17 @@
 import axios from 'axios';
-import { getItemsList,selectItem, cart } from '../actions/actions.js';
+import { getItemsList,selectItem, cart, sendFileSuceess } from '../actions/actions.js';
 
+export const SendFileRequest = async(dispatch, file) => {
+  try {
+    console.log('file', file);
+    let formData = new FormData()
+    formData.append('name', file);
+    let success = await axios.post('/file', formData)
+    dispatch(sendFileSuceess(success));
+  } catch(err) {
+    console.log(err);
+  }
+}
 //запрос имеющегося списка товаров
 export const getItemsListRequest = async(dispatch)=> {
     try{
@@ -44,4 +55,3 @@ export const cartAddRequest = async(dispatch, id) => {
 //             dispatch(getItemsList.error(error));
 //         });
 // };
-
