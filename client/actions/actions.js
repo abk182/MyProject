@@ -13,3 +13,6 @@ export const selectItem = {
 export const cart = {
     add: (ItemsList)=> ({type:CART.CART_ADD, ItemsList})
 };
+
+export const sendFile = (file) => ({type: "SEND_FILE", file});
+export const sendFileSuceess = (success) => ({type: "SEND_FILE_SUCCESS", success});
