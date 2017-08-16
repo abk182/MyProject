@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import MainPage from './components/mainPage.jsx';
 import ItemPage from './components/itemPage.jsx';
 import CartPage from './components/cartPage.jsx';
+import AdministrationPage from './components/administrationPage.jsx';
 import * as reducers from'./reducers/reducer.js';
 
 const store = createStore(combineReducers(reducers),applyMiddleware(thunk));
@@ -20,6 +21,7 @@ ReactDOM.render(
                 <Route exact path ='/' component = {MainPage}/>
                 <Route path ='/item/:id' component = {ItemPage}/>
                 <Route path ='/cart' component={CartPage}/>
+                <Route path='/admin' component={AdministrationPage}/>
             </div>
         </BrowserRouter>
     </Provider>

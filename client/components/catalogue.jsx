@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 //тупой каталог
-export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
+export const Catalogue = ({ItemsList,thunkCartAdd, selectItem}) => {
     return(
         <div className="catalogue row">
             {
@@ -17,7 +17,7 @@ export const Catalogue = ({ItemsList, cartAdd, selectItem}) => {
                                 </div>
                             </Link>
                             <button type="button" id={item.id} className="cart-btn btn btn-secondary btn-sm"
-                                    onClick={(e)=>cartAdd(item.id)}>В корзину</button>
+                                    onClick={(e)=>thunkCartAdd(item.id)}>В корзину</button>
                         </div>
                     )
                 })

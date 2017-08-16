@@ -11,7 +11,7 @@ const mapStateToProps = ({SelectedItem},params) => ({
 
 const mapDispatchToProps = dispatch => ({
     thunkSelectedItem: (id)=> dispatch(thunkSelectedItem(id)),
-    cartAdd: (id) => dispatch(thunkCartAdd(id)),
+    thunkCartAdd: (id) => dispatch(thunkCartAdd(id)),
 });
 
 
@@ -38,7 +38,7 @@ class ItemPage extends React.Component{
                         <p>{this.props.SelectedItem.price}</p>
                     </div>
                 </div>
-                <button className="btn col" onClick={()=> this.props.cartAdd(this.props.SelectedItem.id)}> В корзину </button>
+                <button className="btn col" onClick={()=> this.props.thunkCartAdd(this.props.SelectedItem.id)}> В корзину </button>
           </div>
         )
     }

@@ -18,7 +18,7 @@ export const SelectedItem = (state, action) =>{
 
 export const Cart = (state, action) =>{
     switch (action.type){
-        case CART.CART_ADD: return Object.assign([],state,action.ItemsList);
+        case CART.CART_ADD: return Object.assign([],action.IDsList);
         default: return state || [];
     }
 };

@@ -14,7 +14,8 @@ class AdministrationPage extends React.Component {
     render() {
         return(
         <div>
-            Страница администрирования
+            <input type="text" />
+            <input type="" />
         </div>
         )
     }

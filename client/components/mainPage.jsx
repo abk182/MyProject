@@ -11,7 +11,7 @@ const mapStateToProps = ({ItemsList})=>({ItemsList});
 
 const mapDispatchToProps = dispatch => ({
     getItemsList: ()=> dispatch(thunkItemsList()),
-    cardAdd: (id) => dispatch(thunkCartAdd(id)),
+    thunkCartAdd: (id) => dispatch(thunkCartAdd(id)),
     selectItem: (Item) => dispatch(selectItem.select(Item))
 });
 
@@ -35,7 +35,7 @@ class MainPage extends React.Component{
                 </nav>
                 <Catalogue
                     ItemsList={this.props.ItemsList}
-                    cartAdd={this.props.cardAdd}
+                    thunkCartAdd={this.props.thunkCartAdd}
                     selectItem={this.props.selectItem}
                 />
             </div>
