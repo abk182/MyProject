@@ -11,7 +11,15 @@ router.post('/cartAdd', async(req, res)=>{
         IDsMassive= itemsIDs.split(',');
         IDsMassive.pop();
 
-        if (response === 'success') res.send(IDsMassive);
+        let itemsInCart = [];
+        let items = await itemsDB.getItems();
+            IDsMassive.forEach(ID=>{
+                items.map(item=>{
+                    if (item.id==ID) itemsInCart.push(item);
+                })
+            });
+
+        if (response === 'success') res.send(itemsInCart);
     }
     catch(err){console.log(err)}
 });
