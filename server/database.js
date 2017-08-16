@@ -10,7 +10,7 @@ module.exports = {
         if(state.database) return done();
 
         let connection = mysql.createConnection({
-            host: 'localhost',
+            host: '127.0.0.1',
             user: 'root',
             password: 'npzpnr23',
             database: 'shop'

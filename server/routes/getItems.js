@@ -1,6 +1,5 @@
 const express = require('express'),
     router = express.Router(),
-    cartsDB = require('../models/cartsDB')
     itemsDB = require('../models/itemsDB');
 
 router.get('/items', async(req,res)=>{
@@ -15,18 +14,6 @@ router.get('/selectedItem/:id',async(req,res)=>{
     try{
         let selectedItem = await itemsDB.getSelectedItem(req.params['id']);
         res.send(selectedItem[0]);
-    }
-    catch(err){console.log(err)}
-});
-
-router.post('/cartAdd', async(req,res)=>{
-    try{
-        let itemsIDs = await cartsDB.getIDsFromCurrentCart();
-        itemsIDs+=req.body.id+',';
-        let response = await cartsDB.pushIDsToDataBase(itemsIDs);
-        IDsMassive= itemsIDs.split(',');
-        IDsMassive.pop();
-        if (response === 'success') res.send(IDsMassive);
     }
     catch(err){console.log(err)}
 });

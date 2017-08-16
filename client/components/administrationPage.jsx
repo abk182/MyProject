@@ -15,7 +15,7 @@ class AdministrationPage extends React.Component {
         return(
         <div>
             <input type="text" />
-            <input type="" />
+            <input type="file" />
         </div>
         )
     }
