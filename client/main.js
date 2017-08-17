@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { BrowserRouter, Route, Match } from 'react-router-dom';
 import thunk from 'redux-thunk';
+import Cookies from 'js-cookie';
 
 import MainPage from './components/mainPage.jsx';
 import ItemPage from './components/itemPage.jsx';
@@ -27,5 +28,7 @@ ReactDOM.render(
     </Provider>
     ,document.getElementById('root')
 );
+
+if(!Cookies.get("UserID")) Cookies.set("UserID", +new Date(), { expires: 2} );
 
 store.subscribe(()=> console.log('Store subscribe: ',store.getState()));
