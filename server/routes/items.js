@@ -6,7 +6,6 @@ router.get('/items', async(req,res)=>{
     try{
         let items = await itemsDB.getItems();
         res.send(items);
-        console.log(req.headers['cookie']);
     }
     catch(err){console.log(err)}
 });

@@ -29,6 +29,7 @@ ReactDOM.render(
     ,document.getElementById('root')
 );
 
-if(!Cookies.get("UserID")) Cookies.set("UserID", +new Date(), { expires: 2} );
+if(!Cookies.get("cartID")) Cookies.set("cartID", +new Date(), { expires: 2} );
+console.log(document.cookie);
 
 store.subscribe(()=> console.log('Store subscribe: ',store.getState()));
