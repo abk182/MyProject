@@ -29,6 +29,12 @@ export const cartAddRequest = async(dispatch, id) => {
   }catch(err){console.log(err);}
 };
 
+export const cartGetRequest = async(dispatch) => {
+  try {
+      let response = await axios.get('/cartGet');
+      dispatch(cart.get(response.data));
+  } catch (err){console.log(err);}
+};
 
 
 

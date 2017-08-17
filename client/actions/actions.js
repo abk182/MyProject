@@ -10,5 +10,6 @@ export const selectItem = {
 };
 
 export const cart = {
-    add: (IDsList)=> ({type:CART.CART_ADD, IDsList})
+    get: (ItemsList) => ({type:CART.CART_GET, ItemsList }),
+    add: (ItemsList)=> ({type:CART.CART_ADD, ItemsList})
 };

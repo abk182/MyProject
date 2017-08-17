@@ -2,9 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { thunkGetCartItems } from '../side-effects/thunks'
+
 const mapStateToProps = ({Cart}) => ({Cart});
 
 const mapDispatchToProps = dispatch => ({
+    getCartItems: ()=> dispatch(thunkGetCartItems())
 });
 
 
@@ -14,7 +17,7 @@ class CartPage extends React.Component{
     }
 
     componentDidMount(){
-
+        this.props.getCartItems();
     }
 
     render() {

@@ -8,9 +8,10 @@ app.use(bodyParer.json());
 app.use(bodyParer.urlencoded({extended: true}));
 app.use('/',express.static(path.join(__dirname,'../public')));
 
-app.get('/items', require('./routes/getItems'));
-app.get('/selectedItem/:id', require('./routes/getItems'));
-app.post('/cartAdd', require('./routes/cartAdd'));
+app.get('/items', require('./routes/items'));
+app.get('/selectedItem/:id', require('./routes/items'));
+app.get('/cartGet', require('./routes/cart'));
+app.post('/cartAdd', require('./routes/cart'));
 
 
 app.get('*', (req, res) => {
