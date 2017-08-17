@@ -1,10 +1,10 @@
 const db = require('../database.js');
 
-exports.getIDsFromCurrentCart = () => {
+exports.getCurrentCart = () => {
     return new Promise((resolve, reject) => {
         db.get().query('select * from carts WHERE cartID = 0', (err, rows) => {
             if(err) reject(err);
-            resolve(rows[0].items);
+            resolve(rows);
         })
     })
 };

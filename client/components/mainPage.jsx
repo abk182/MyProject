@@ -25,7 +25,6 @@ class MainPage extends React.Component{
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="container" >
                 <nav className="main-menu nav-tabs">
