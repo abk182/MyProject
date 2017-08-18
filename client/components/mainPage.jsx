@@ -28,9 +28,7 @@ class MainPage extends React.Component{
         return (
             <div className="container" >
                 <nav className="main-menu nav-tabs">
-                    <li>Выбор каталога | </li>
-                    <li>Еще какая-нибудь кнопка </li>
-                    <Link to="/cart"> Корзина </Link>
+                    <Link to="/cart" > Корзина </Link>
                 </nav>
                 <Catalogue
                     ItemsList={this.props.ItemsList}

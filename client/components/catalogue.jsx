@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 //тупой каталог
 export const Catalogue = ({ItemsList,thunkCartAdd, selectItem}) => {
     return(
+        <div className="container">
         <div className="catalogue row">
             {
                 ItemsList.map(item => {
@@ -22,6 +23,7 @@ export const Catalogue = ({ItemsList,thunkCartAdd, selectItem}) => {
                     )
                 })
             }
+        </div>
         </div>
     )
 };

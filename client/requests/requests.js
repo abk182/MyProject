@@ -22,18 +22,26 @@ export const selectedItemRequest = async(dispatch, id)=> {
 };
 
 //функция запроса на добавления в карзину
+export const cartGetRequest = async(dispatch) => {
+    try {
+        let response = await axios.get('/cartGet');
+        dispatch(cart.get(response.data));
+    } catch (err){console.log(err);}
+};
+
 export const cartAddRequest = async(dispatch, id) => {
   try{
       let response = await axios.post('/cartAdd', {'id':id});
-      dispatch(cart.add(response.data))
+      dispatch(cart.add(response.data));
   }catch(err){console.log(err);}
 };
 
-export const cartGetRequest = async(dispatch) => {
-  try {
-      let response = await axios.get('/cartGet');
-      dispatch(cart.get(response.data));
-  } catch (err){console.log(err);}
+export const cartDeleteRequest = async(dispatch, index) => {
+    try{
+        let response = await axios.delete('/cartDelete/'+index);
+        console.log(response.data);
+        dispatch(cart.delete(response.data));
+    }catch(err){console.log(err);}
 };
 
 

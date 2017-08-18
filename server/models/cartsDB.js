@@ -6,7 +6,7 @@ exports.getCurrentCart = (cartID) => {
             if (!rows.length) {
                 db.get().query(`INSERT INTO carts (cartID, items) VALUES (${cartID.slice(7)}, '')`, (err)=>{
                     if (err) reject(err);
-                })
+                });
                 db.get().query('select * from carts WHERE '+cartID, (err, rows) => {
                     if (err) reject(err);
                     resolve(rows);

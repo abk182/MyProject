@@ -22,6 +22,21 @@ router.post('/cartAdd', async(req, res)=>{
     catch(err){console.log(err);res.send({Error: 'Might be no such card with id'})}
 });
 
+router.delete('/cartDelete/:index', async(req,res)=>{
+    try{
+        let cart = await cartsDB.getCurrentCart(req.headers['cookie']);
+        let items = await ConvertIDsIntoItems(cart[0].items);
+        items.splice(req.params['index'],1);
+        let IDs='';
+        items.map(item=>{
+            IDs+= item.id+',';
+        });
+        let response = await cartsDB.pushIDsToDataBase(req.headers['cookie'],IDs);
+        items= await ConvertIDsIntoItems(IDs);
+        res.send(items);
+    }catch(err){console.log(err);}
+});
+
 async function ConvertIDsIntoItems(itemsIDs) {
     let IDs = itemsIDs.split(',');IDs.pop();
     let itemsInCart = [];

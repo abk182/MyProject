@@ -12,6 +12,7 @@ app.get('/items', require('./routes/items'));
 app.get('/selectedItem/:id', require('./routes/items'));
 app.get('/cartGet', require('./routes/cart'));
 app.post('/cartAdd', require('./routes/cart'));
+app.delete('/cartDelete/:index', require('./routes/cart'));
 
 
 app.get('*', (req, res) => {

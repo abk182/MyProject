@@ -8,5 +8,6 @@ export const ITEMS = {
 
 export const CART = {
     CART_GET:"CART_GET",
-    CART_ADD:"CART_ADD"
+    CART_ADD:"CART_ADD",
+    CART_DELETE:"CART_DELETE"
 };
