@@ -40,20 +40,23 @@ class CartPage extends React.Component{
                             {this.props.Cart.length ? this.props.Cart.map((item,index)=>{
                                 return (
                                     <div key={index} className="row">
-                                        <div className="col"><img className="img-fluid" src={"../img/"+item.img}/></div>
-
-                                        <div className="col-2">{item.name}</div>
-                                        <div className="col-2">{item.price} руб.</div>
+                                        <Link to ={`/item/${item.id}`} className="col row" onClick={(e)=>selectItem(item)}>
+                                            <div className="col">
+                                                <img className="img-fluid" src={"../img/"+item.img}/>
+                                            </div>
+                                            <div className="col-2">{item.name}</div>
+                                            <div className="col-2">{item.price} руб.</div>
+                                        </Link>
                                         <input type="submit"
                                                value="X"
                                                className="col-2 btn btn-secondary btn-sm"
                                                onClick={(e)=>this.props.thunkCartDelete(index)}/>
                                     </div>
                                 )
-                            }) : <div className="row">Корзина пуста</div> }
+                            }) : <div className="row"><div className="col">Корзина пуста</div></div> }
 
                 </div>
-                <div className="conyainer">
+                <div className="container">
                     <div className="row">
                         <div className="col">Сумма к опате: </div>
                         <div className="col-12">{this.totalPrice()}</div>

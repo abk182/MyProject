@@ -47,7 +47,6 @@ export const cartAddRequest = async(dispatch, id) => {
 export const cartDeleteRequest = async(dispatch, index) => {
     try{
         let response = await axios.patch('/cartDelete/'+ Cookies.get().cartID,{'index':index});
-        console.log(response.data);
         dispatch(cart.delete(response.data));
     }catch(err){
         console.log(err);
