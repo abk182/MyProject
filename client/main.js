@@ -30,6 +30,6 @@ ReactDOM.render(
 );
 
 if(!Cookies.get("cartID")) Cookies.set("cartID", +new Date(), { expires: 2} );
-console.log(document.cookie);
+
 
 store.subscribe(()=> console.log('Store subscribe: ',store.getState()));

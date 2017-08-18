@@ -10,9 +10,9 @@ app.use('/',express.static(path.join(__dirname,'../public')));
 
 app.get('/items', require('./routes/items'));
 app.get('/selectedItem/:id', require('./routes/items'));
-app.get('/cartGet', require('./routes/cart'));
-app.post('/cartAdd', require('./routes/cart'));
-app.delete('/cartDelete/:index', require('./routes/cart'));
+app.get('/cartGet/:cartID', require('./routes/cart'));
+app.post('/cartAdd/:cartID', require('./routes/cart'));
+app.patch('/cartDelete/:cartID', require('./routes/cart'));
 
 
 app.get('*', (req, res) => {

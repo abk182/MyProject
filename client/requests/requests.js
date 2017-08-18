@@ -1,4 +1,6 @@
 import axios from 'axios';
+import Cookies from 'js-cookie';
+
 import { getItemsList,selectItem, cart } from '../actions/actions.js';
 
 //запрос имеющегося списка товаров
@@ -18,30 +20,38 @@ export const selectedItemRequest = async(dispatch, id)=> {
         let response = await axios.get(`/selectedItem/${id}`);
         dispatch(selectItem.select(response.data))
     }
-    catch(err){console.log(err)}
+    catch(err){
+        console.log(err)
+    }
 };
 
 //функция запроса на добавления в карзину
 export const cartGetRequest = async(dispatch) => {
     try {
-        let response = await axios.get('/cartGet');
+        let response = await axios.get('/cartGet/'+Cookies.get().cartID);
         dispatch(cart.get(response.data));
-    } catch (err){console.log(err);}
+    } catch (err){
+        console.log(err);
+    }
 };
 
 export const cartAddRequest = async(dispatch, id) => {
   try{
-      let response = await axios.post('/cartAdd', {'id':id});
+      let response = await axios.post('/cartAdd/'+ Cookies.get().cartID, {'id':id});
       dispatch(cart.add(response.data));
-  }catch(err){console.log(err);}
+  } catch(err) {
+      console.log(err);
+  }
 };
 
 export const cartDeleteRequest = async(dispatch, index) => {
     try{
-        let response = await axios.delete('/cartDelete/'+index);
+        let response = await axios.patch('/cartDelete/'+ Cookies.get().cartID,{'index':index});
         console.log(response.data);
         dispatch(cart.delete(response.data));
-    }catch(err){console.log(err);}
+    }catch(err){
+        console.log(err);
+    }
 };
 
 
