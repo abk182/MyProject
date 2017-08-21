@@ -13,7 +13,8 @@ import AdministrationPage from './components/administrationPage.jsx';
 import * as reducers from'./reducers/reducer.js';
 
 const store = createStore(combineReducers(reducers),applyMiddleware(thunk));
-// console.log('Store init: ',store.getState());
+
+if(!Cookies.get("cartID")) Cookies.set("cartID", +new Date(), { expires: 2} );
 
 ReactDOM.render(
     <Provider store={store}>
@@ -29,7 +30,6 @@ ReactDOM.render(
     ,document.getElementById('root')
 );
 
-if(!Cookies.get("cartID")) Cookies.set("cartID", +new Date(), { expires: 2} );
 
 
 store.subscribe(()=> console.log('Store subscribe: ',store.getState()));

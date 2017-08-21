@@ -56,12 +56,13 @@ class CartPage extends React.Component{
                             }) : <div className="row"><div className="col">Корзина пуста</div></div> }
 
                 </div>
-                <div className="container">
+                {this.props.Cart.length ? (<div className="container">
                     <div className="row">
                         <div className="col">Сумма к опате: </div>
                         <div className="col-12">{this.totalPrice()}</div>
+                        <input type="submit" value="Оформить заказ" className="col-2 btn btn-secondary btn-sm"/>
                     </div>
-                </div>
+                </div>):''}
             </div>
         )
     }
