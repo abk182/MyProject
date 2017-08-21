@@ -2,13 +2,19 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import {thunkCartDelete, thunkGetCartItems} from '../side-effects/thunks'
+import { thunkCartDelete, thunkGetCartItems, thunkOrder } from '../side-effects/thunks'
+import { order } from '../actions/actions'
 
-const mapStateToProps = ({Cart}) => ({Cart});
+const mapStateToProps = ({Cart, UserInfo}) => ({Cart, UserInfo});
 
 const mapDispatchToProps = dispatch => ({
-    getCartItems: ()=> dispatch(thunkGetCartItems()),
+    getCartItems: () => dispatch(thunkGetCartItems()),
     thunkCartDelete: (index) => dispatch(thunkCartDelete(index)),
+    thunkOrder: (order) => dispatch(thunkOrder(order)),
+    changeName: (Name) => dispatch(order.changeName(Name)),
+    changeSurname: (Surname) => dispatch(order.changeSurname(Surname)),
+    changePhone: (Phone) => dispatch(order.changePhone(Phone)),
+    changeAddress: (Address) => dispatch(order.changeAddress(Address))
 });
 
 
@@ -30,6 +36,14 @@ class CartPage extends React.Component{
         return price;
     }
 
+    makeOrder(){
+        let Order = {
+            Cart:this.props.Cart,
+            Info:this.props.UserInfo
+        };
+        return Order
+    }
+
     render() {
         console.log(this.props);
         return (
@@ -44,8 +58,8 @@ class CartPage extends React.Component{
                                             <div className="col">
                                                 <img className="img-fluid" src={"../img/"+item.img}/>
                                             </div>
-                                            <div className="col-2">{item.name}</div>
-                                            <div className="col-2">{item.price} руб.</div>
+                                            <div className="col-md-2 col-sm-4 ">{item.name}</div>
+                                            <div className="col-md-2 col-sm-4 ">{item.price} руб.</div>
                                         </Link>
                                         <input type="submit"
                                                value="X"
@@ -57,10 +71,17 @@ class CartPage extends React.Component{
 
                 </div>
                 {this.props.Cart.length ? (<div className="container">
-                    <div className="row">
-                        <div className="col">Сумма к опате: </div>
-                        <div className="col-12">{this.totalPrice()}</div>
-                        <input type="submit" value="Оформить заказ" className="col-2 btn btn-secondary btn-sm"/>
+                    <hr/>
+                    <p>Сумма к опате: {this.totalPrice()} руб.</p>
+                    <div className="">
+                        <p><input type="text" onChange={(e)=>this.props.changeName(e.target.value)}/> Имя</p>
+                        <p><input type="text" onChange={(e)=>this.props.changeSurname(e.target.value)}/> Фамилия</p>
+                        <p><input type="text" onChange={(e)=>this.props.changePhone(e.target.value)}/> Телефон</p>
+                        <p><input type="text" onChange={(e)=>this.props.changeAddress(e.target.value)}/> Адрес</p>
+                        <input type="submit"
+                                value="Оформить заказ"
+                                className="btn btn-success"
+                                onClick={(e)=>this.props.thunkOrder(this.makeOrder())}/>
                     </div>
                 </div>):''}
             </div>

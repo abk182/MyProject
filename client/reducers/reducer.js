@@ -1,4 +1,4 @@
-import { ITEMS, CART } from "../consts/consts";
+import { ITEMS, CART, ORDER } from "../consts/consts";
 
 export const ItemsList = (state,action)=>{
     switch (action.type){
@@ -22,5 +22,15 @@ export const Cart = (state, action) =>{
         case CART.CART_ADD: return Object.assign([],action.ItemsList);
         case CART.CART_DELETE: return  Object.assign([],action.ItemsList);
         default: return state || [];
+    }
+};
+
+export const UserInfo = (state, action) => {
+    switch (action.type){
+        case ORDER.CHANGE_NAME: return Object.assign({},state,{name: action.Name});
+        case ORDER.CHANGE_SURNAME: return Object.assign({},state,{surname: action.Surname});
+        case ORDER.CHANGE_PHONE: return Object.assign({},state,{phone: action.Phone});
+        case ORDER.CHANGE_ADDRESS: return Object.assign({},state,{address: action.Address});
+        default: return state || {};
     }
 };

@@ -3,6 +3,7 @@ const express = require('express'),
     cartsDB = require('../models/cartsDB'),
     itemsDB = require('../models/itemsDB');
 
+
 router.get('/cartGet/:cartID', async(req,res)=>{
     try{
         let cart = await cartsDB.getCurrentCart(req.params['cartID']);
@@ -33,7 +34,7 @@ router.patch('/cartDelete/:cartID', async(req,res)=>{
         });
         let response = await cartsDB.pushIDsToDataBase(req.params['cartID'],IDs);
         items= await ConvertIDsIntoItems(IDs);
-        res.send(items);
+        if (response=='success')res.send(items);
     }catch(err){console.log(err);}
 });
 

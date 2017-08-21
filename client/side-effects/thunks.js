@@ -1,4 +1,9 @@
-import { getItemsListRequest, selectedItemRequest, cartAddRequest, cartGetRequest, cartDeleteRequest} from "../requests/requests"
+import { getItemsListRequest,
+    selectedItemRequest,
+    cartAddRequest,
+    cartGetRequest,
+    cartDeleteRequest,
+    orderRequest} from "../requests/requests"
 
 export const thunkItemsList = () => {
     return (
@@ -36,6 +41,14 @@ export const thunkCartDelete = (index) => {
     return (
         (dispatch) => {
             cartDeleteRequest(dispatch, index);
+        }
+    )
+};
+
+export const thunkOrder = (order) => {
+    return (
+        (dispatch) => {
+            orderRequest(dispatch, order);
         }
     )
 };

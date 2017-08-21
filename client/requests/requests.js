@@ -53,6 +53,15 @@ export const cartDeleteRequest = async(dispatch, index) => {
     }
 };
 
+export const orderRequest = async(dispatch, order)=> {
+    try{
+        let response = await axios.post('/order/'+Cookies.get().cartID, order);
+        console.log(response.data);
+    }catch (err){
+        console.log(err);
+    }
+};
+
 
 
 

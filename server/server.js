@@ -13,6 +13,7 @@ app.get('/selectedItem/:id', require('./routes/items'));
 app.get('/cartGet/:cartID', require('./routes/cart'));
 app.post('/cartAdd/:cartID', require('./routes/cart'));
 app.patch('/cartDelete/:cartID', require('./routes/cart'));
+app.post('/order/:id', require('./routes/order.js'));
 
 
 app.get('*', (req, res) => {
