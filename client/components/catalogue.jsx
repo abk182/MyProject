@@ -17,8 +17,17 @@ export const Catalogue = ({ItemsList,thunkCartAdd, selectItem}) => {
                                 <p className="item-price">Цена: {item.price} руб.</p>
                                 </div>
                             </Link>
-                            <button type="button" id={item.id} className="cart-btn btn btn-secondary btn-sm"
-                                    onClick={(e)=>thunkCartAdd(item.id)}>В корзину</button>
+                            {
+                                item.count ? (<button type="button"
+                                                      id={item.id}
+                                                      className="cart-btn btn btn-secondary btn-sm"
+                                                      onClick={(e)=>thunkCartAdd(item.id)}>В корзину</button>):(
+                                    <button type="button"
+                                            id={item.id}
+                                            className="cart-btn btn btn-sm"
+                                            >Ожидается поставка</button>
+                                )
+                            }
                         </div>
                     )
                 })

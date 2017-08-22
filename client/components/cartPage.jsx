@@ -45,21 +45,20 @@ class CartPage extends React.Component{
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="container" >
-                <nav className="nav-tabs">Кнопка корзины</nav>
+                <nav className="nav-tabs"><Link to ={`/`} className="col row">На главную</Link></nav>
                 <div className="container">
 
                             {this.props.Cart.length ? this.props.Cart.map((item,index)=>{
                                 return (
                                     <div key={index} className="row">
                                         <Link to ={`/item/${item.id}`} className="col row" onClick={(e)=>selectItem(item)}>
-                                            <div className="col">
+                                            <div className="col-md-4 col-sm">
                                                 <img className="img-fluid" src={"../img/"+item.img}/>
                                             </div>
-                                            <div className="col-md-2 col-sm-4 ">{item.name}</div>
-                                            <div className="col-md-2 col-sm-4 ">{item.price} руб.</div>
+                                            <div className="col-md col-sm-4 ">{item.name}</div>
+                                            <div className="col-md-3 col-sm-4 ">{item.price} руб.</div>
                                         </Link>
                                         <input type="submit"
                                                value="X"

@@ -28,23 +28,28 @@ class ItemPage extends React.Component{
     }
 
     render() {
-        console.log(this.props);
         return (
             <div className="container" >
                 <nav className="main-menu nav-tabs">
+                    <Link to ={`/`}>На главную</Link>
                     <Link to="/cart" > Корзина {this.props.Cart.length ? '('+this.props.Cart.length+')' : ''} </Link>
                 </nav>
                 <div className="row">
-                    <div className="col">
+                    <div className="col-sm-8 col-md-6 col-lg-8 col-sm-pull-4">
                         <img className="img-fluid" src={"../img/" + this.props.SelectedItem.img}/>
                     </div>
-                    <div className="col-4">
+                    <div className="col-sm-4 col-md-6 col-lg-4 col-sm-push-8">
                         <p>{this.props.SelectedItem.name}</p>
-                        <p>{this.props.SelectedItem.price}</p>
                         <p>{this.props.SelectedItem.description}</p>
+                        <p>Цена: {this.props.SelectedItem.price} руб.</p>
                     </div>
                 </div>
-                <button className="btn col" onClick={()=> this.props.thunkCartAdd(this.props.SelectedItem.id)}> В корзину </button>
+                {this.props.SelectedItem.count ? (
+                    <button className="btn btn-default col"
+                            onClick={()=> this.props.thunkCartAdd(this.props.SelectedItem.id)}
+                    > В корзину </button>):(
+                    <button className="btn col">Ожидается поставка</button>
+                )}
           </div>
         )
     }
