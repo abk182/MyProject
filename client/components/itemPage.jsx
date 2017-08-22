@@ -45,7 +45,7 @@ class ItemPage extends React.Component{
                     </div>
                 </div>
                 {this.props.SelectedItem.count ? (
-                    <button className="btn btn-default col"
+                    <button className="btn btn-secondary col"
                             onClick={()=> this.props.thunkCartAdd(this.props.SelectedItem.id)}
                     > В корзину </button>):(
                     <button className="btn col">Ожидается поставка</button>

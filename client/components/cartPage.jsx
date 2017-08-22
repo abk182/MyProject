@@ -52,7 +52,7 @@ class CartPage extends React.Component{
 
                             {this.props.Cart.length ? this.props.Cart.map((item,index)=>{
                                 return (
-                                    <div key={index} className="row">
+                                    <div key={index} className="row item">
                                         <Link to ={`/item/${item.id}`} className="col row" onClick={(e)=>selectItem(item)}>
                                             <div className="col-md-4 col-sm">
                                                 <img className="img-fluid" src={"../img/"+item.img}/>
