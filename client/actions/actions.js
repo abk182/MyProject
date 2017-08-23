@@ -6,7 +6,11 @@ export const getItemsList = {
 };
 
 export const selectItem = {
-    select: (Item)=> ({type:ITEMS.ITEM_SELECT, Item})
+    select: (Item)=> ({type:ITEMS.ITEM_SELECT, Item}),
+    changeName: (Name)=>({type:ITEMS.ITEM_CHANGE_NAME,Name}),
+    changePrice: (Price)=>({type:ITEMS.ITEM_CHANGE_PRICE,Price}),
+    changeCount: (Count)=>({type:ITEMS.ITEM_CHANGE_COUNT,Count}),
+    changeDescription: (Description)=>({type:ITEMS.ITEM_CHANGE_DESCRIPTION,Description}),
 };
 
 export const cart = {

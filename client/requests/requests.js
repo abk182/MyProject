@@ -62,6 +62,29 @@ export const orderRequest = async(dispatch, order)=> {
     }
 };
 
+export const saveItemChangesRequest = async(dispatch, item) =>{
+    try{
+        let response = await axios.post('/saveItemChanges/'+item.id, item);
+        if (response.data=='success') {
+            let response = await axios.get('/items');
+            dispatch(getItemsList.success(response.data))}
+    }catch (err){
+        console.log(err);
+    }
+};
+
+export const deleteItemRequest = async(dispatch, id) => {
+    try{
+        let response = await axios.delete('/itemdelete/'+id);
+        if (response.data=='success') {
+            let response = await axios.get('/items');
+            dispatch(selectItem.select({}))
+            dispatch(getItemsList.success(response.data))}
+    } catch(err) {
+        console.log(err);
+    }
+};
+
 
 
 

@@ -12,6 +12,10 @@ export const SelectedItem = (state, action) =>{
     console.log(action);
     switch (action.type){
         case ITEMS.ITEM_SELECT: return  Object.assign({},action.Item);
+        case ITEMS.ITEM_CHANGE_NAME: return Object.assign({},state,{name:action.Name});
+        case ITEMS.ITEM_CHANGE_PRICE: return Object.assign({},state,{price:action.Price});
+        case ITEMS.ITEM_CHANGE_COUNT: return Object.assign({},state,{count:action.Count});
+        case ITEMS.ITEM_CHANGE_DESCRIPTION: return Object.assign({},state,{description:action.Description});
         default: return state || {};
     }
 };
