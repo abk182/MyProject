@@ -1,10 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { LocalForm, Control } from 'react-redux-form';
 
 import { thunkItemsList, thunkSaveChanges, thunkDeleteItem } from '../side-effects/thunks';
 import { selectItem, } from "../actions/actions";
 
-const mapStateToProps = ({ItemsList,SelectedItem}) => ({ItemsList,SelectedItem});
+const mapStateToProps = ({ItemsList,SelectedItem}) => ({ItemsList,
+    SelectedItem,
+    });
 
 const mapDispatchToProps = dispatch => ({
     getItemsList: ()=> dispatch(thunkItemsList()),
@@ -25,8 +28,10 @@ class AdministrationPage extends React.Component {
         this.props.getItemsList();
     }
 
+    handleSubmit(values){console.log(values)};
+
     render() {
-        console.log('AdminPage',this.props)
+        console.log('AdminPage',this.props);
         return(
         <div className="container">
             <div className="row">
@@ -84,8 +89,15 @@ class AdministrationPage extends React.Component {
                 }
             </div>
             <hr/>
-            <input type="text" />
-            <input type="file" />
+            <LocalForm
+                onSubmit={(values) => this.handleSubmit(values)}
+            >
+                <Control.text model=".username" />
+                <Control.text model=".password" />
+                <Control.file model=".file" />
+                <Control.button model=".submit">Cохранить</Control.button>
+            </LocalForm>
+
         </div>
         )
     }

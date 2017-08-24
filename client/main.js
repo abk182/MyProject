@@ -12,6 +12,7 @@ import CartPage from './components/cartPage.jsx';
 import AdministrationPage from './components/administrationPage.jsx';
 import * as reducers from'./reducers/reducer.js';
 
+
 const store = createStore(combineReducers(reducers),applyMiddleware(thunk));
 
 if(!Cookies.get("cartID")) Cookies.set("cartID", +new Date(), { expires: 2} );
