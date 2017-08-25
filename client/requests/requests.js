@@ -85,6 +85,15 @@ export const deleteItemRequest = async(dispatch, id) => {
     }
 };
 
+export const addItemRequest = async(dispatch, Item) => {
+    try {
+        console.log(Item.get('name'));
+        let response = await  axios.post('/addItem', Item)
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 
 
 

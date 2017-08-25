@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { LocalForm, Control } from 'react-redux-form';
 
-import { thunkItemsList, thunkSaveChanges, thunkDeleteItem } from '../side-effects/thunks';
+import { thunkItemsList, thunkSaveChanges, thunkDeleteItem, thunkAddItem } from '../side-effects/thunks';
 import { selectItem, } from "../actions/actions";
 
 const mapStateToProps = ({ItemsList,SelectedItem}) => ({ItemsList,
@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => ({
     changeCount: (Count) => dispatch(selectItem.changeCount(Count)),
     changeDescription: (Description) => dispatch(selectItem.changeDescription(Description)),
     saveChanges: (Item) => dispatch(thunkSaveChanges(Item)),
-    deleteItem: (Id) => dispatch(thunkDeleteItem(Id))
+    deleteItem: (Id) => dispatch(thunkDeleteItem(Id)),
+    addItem: (Item) => dispatch(thunkAddItem(Item))
 });
 
 class AdministrationPage extends React.Component {
@@ -28,7 +29,16 @@ class AdministrationPage extends React.Component {
         this.props.getItemsList();
     }
 
-    handleSubmit(values){console.log(values)};
+    handleSubmit(values){
+        let formData= new FormData();
+        let file=values.file[0];
+        formData.append('img',file);
+        formData.append('name',values.name);
+        this.props.addItem(formData);
+
+
+
+    };
 
     render() {
         console.log('AdminPage',this.props);
@@ -92,9 +102,9 @@ class AdministrationPage extends React.Component {
             <LocalForm
                 onSubmit={(values) => this.handleSubmit(values)}
             >
-                <Control.text model=".username" />
-                <Control.text model=".password" />
-                <Control.file model=".file" />
+                <Control.text model=".name" />
+                <Control.text model=".price" />
+                <Control.file model=".file"/>
                 <Control.button model=".submit">Cохранить</Control.button>
             </LocalForm>
 
