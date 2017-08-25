@@ -85,10 +85,19 @@ export const deleteItemRequest = async(dispatch, id) => {
     }
 };
 
-export const addItemRequest = async(dispatch, Item) => {
+export const addItemRequest = async(dispatch, img, Item) => {
     try {
-        console.log(Item.get('name'));
-        let response = await  axios.post('/addItem', Item)
+
+        let responseImg = await axios.post('/addImg', img);
+        Item.img = responseImg.data.img;
+        console.log(Item);
+        if (responseImg.data.status=='OK') {
+            let responseNewItem = await axios.post('/addNewItem', Item);
+            if( responseNewItem.data.status=='OK'){
+                let response = await axios.get('/items');
+                dispatch(getItemsList.success(response.data))
+            }
+        }
     } catch(err) {
         console.log(err);
     }

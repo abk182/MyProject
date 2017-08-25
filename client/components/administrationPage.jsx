@@ -18,26 +18,36 @@ const mapDispatchToProps = dispatch => ({
     changeDescription: (Description) => dispatch(selectItem.changeDescription(Description)),
     saveChanges: (Item) => dispatch(thunkSaveChanges(Item)),
     deleteItem: (Id) => dispatch(thunkDeleteItem(Id)),
-    addItem: (Item) => dispatch(thunkAddItem(Item))
+    addItem: (img,Item) => dispatch(thunkAddItem(img,Item))
 });
 
 class AdministrationPage extends React.Component {
+
     constructor(props) {
         super(props);
     }
+
     componentDidMount(){
         this.props.getItemsList();
     }
 
     handleSubmit(values){
-        let formData= new FormData();
-        let file=values.file[0];
-        formData.append('img',file);
-        formData.append('name',values.name);
-        this.props.addItem(formData);
+        let Item = {
+            name: values.name,
+            price: values.price,
+            count: values.count,
+            description: values.description
+        };
 
-
-
+        try{
+            let formData= new FormData();
+            let file=values.file[0];
+            formData.append('img',file);
+            formData.append('name',values.name);
+            this.props.addItem(formData,Item);
+        }catch(err){
+            alert('Выбирите изображение!')
+        }
     };
 
     render() {
@@ -102,16 +112,21 @@ class AdministrationPage extends React.Component {
             <LocalForm
                 onSubmit={(values) => this.handleSubmit(values)}
             >
-                <Control.text model=".name" />
-                <Control.text model=".price" />
-                <Control.file model=".file"/>
-                <Control.button model=".submit">Cохранить</Control.button>
+                <label>Имя </label>
+                <Control.text model=".name" /><br/>
+                <label>Цена </label>
+                <Control.text model=".price"  type="number"/><br/>
+                <label>Кол-во</label>
+                <Control.text model=".count"  type="number"/><br/>
+                <label>Описание</label>
+                <Control.text model=".description" /><br/>
+                <label>Изображение</label>
+                <Control.file model=".file"/><br/>
+                <Control.button model=".submit">Добавить</Control.button>
             </LocalForm>
-
         </div>
         )
     }
 }
-
 
 export default connect(mapStateToProps,mapDispatchToProps)(AdministrationPage);

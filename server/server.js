@@ -15,7 +15,8 @@ app.post('/cartAdd/:cartID', require('./routes/cart'));
 app.patch('/cartDelete/:cartID', require('./routes/cart'));
 app.post('/order/:id', require('./routes/order.js'));
 app.post('/saveItemChanges/:id', require('./routes/items.js'));
-app.post('/addItem', require('./routes/items.js'));
+app.post('/addImg', require('./routes/items.js'));
+app.post('/addNewItem', require('./routes/items.js'));
 app.delete('/itemdelete/:id', require('./routes/items'));
 
 

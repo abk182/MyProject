@@ -37,4 +37,12 @@ exports.deleteItem = (id) => {
     })
 };
 
+exports.addItem = (Item) => {
+    return new Promise((resolve, reject)=>{
+        db.get().query(`INSERT INTO items (id, name, price, img, description, count) VALUES (NULL,'${Item.name}',${Item.price},'${Item.img}','${Item.description}',${Item.count})`, err=>{
+            if (err) reject(err);
+            resolve({status:'OK'});
+        })
+    })
+}
 

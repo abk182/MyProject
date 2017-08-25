@@ -72,10 +72,10 @@ export const thunkDeleteItem = (id) => {
     )
 };
 
-export const thunkAddItem = (Item) => {
+export const thunkAddItem = (img, Item) => {
     return(
         (dispatch) => {
-            addItemRequest(dispatch, Item);
+            addItemRequest(dispatch, img, Item);
         }
     )
 }
