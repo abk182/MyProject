@@ -2,7 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { LocalForm, Control } from 'react-redux-form';
 
-import { thunkItemsList, thunkSaveChanges, thunkDeleteItem, thunkAddItem } from '../side-effects/thunks';
+import { thunkItemsList,
+    thunkSaveChanges,
+    thunkDeleteItem,
+    thunkAddItem,
+    thunkLogin } from '../side-effects/thunks';
 import { selectItem, } from "../actions/actions";
 
 const mapStateToProps = ({ItemsList,SelectedItem}) => ({ItemsList,
@@ -18,7 +22,8 @@ const mapDispatchToProps = dispatch => ({
     changeDescription: (Description) => dispatch(selectItem.changeDescription(Description)),
     saveChanges: (Item) => dispatch(thunkSaveChanges(Item)),
     deleteItem: (Id) => dispatch(thunkDeleteItem(Id)),
-    addItem: (img,Item) => dispatch(thunkAddItem(img,Item))
+    addItem: (img,Item) => dispatch(thunkAddItem(img,Item)),
+    login: (credentials) => dispatch(thunkLogin(credentials))
 });
 
 class AdministrationPage extends React.Component {
@@ -55,31 +60,38 @@ class AdministrationPage extends React.Component {
         return(
         <div className="container">
             <div className="row">
+                <LocalForm onSubmit={(values)=>this.props.login(values)}>
+                    <Control.text model=".name"/>
+                    <Control.text model=".password"/>
+                    <Control.button model=".submit"> log in</Control.button>
+                </LocalForm>
+            </div>
+            <div className="row">
                 <div className="col-8">
-            <table className="table table-bordered table-hover ">
-                <thead>
-                    <tr>
-                        <td>ID</td>
-                        <td>Наименование</td>
-                        <td>Цена</td>
-                        <td>Шт.</td>
-                    </tr>
-                </thead>
-                {
-                    this.props.ItemsList.map(item=>{
-                        return(
-                            <tbody key = {item.id}>
-                            <tr onClick={(e)=>this.props.selectItem(item)}>
-                                <td>{item.id}</td>
-                                <td>{item.name}</td>
-                                <td>{item.price}</td>
-                                <td>{item.count}</td>
+                    <table className="table table-bordered table-hover ">
+                        <thead>
+                            <tr>
+                                <td>ID</td>
+                                <td>Наименование</td>
+                                <td>Цена</td>
+                                <td>Шт.</td>
                             </tr>
-                            </tbody>
-                        )
-                    })
-                }
-            </table>
+                        </thead>
+                        {
+                            this.props.ItemsList.map(item=>{
+                                return(
+                                    <tbody key = {item.id}>
+                                    <tr onClick={(e)=>this.props.selectItem(item)}>
+                                        <td>{item.id}</td>
+                                        <td>{item.name}</td>
+                                        <td>{item.price}</td>
+                                        <td>{item.count}</td>
+                                    </tr>
+                                    </tbody>
+                                )
+                            })
+                        }
+                    </table>
                 </div>
                 { this.props.SelectedItem.id ? (
                     <div className="col-4">

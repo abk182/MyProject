@@ -101,7 +101,13 @@ export const addItemRequest = async(dispatch, img, Item) => {
     } catch(err) {
         console.log(err);
     }
-}
+};
+
+export const loginRequest = async(dispatch, credentials) => {
+    try{
+        await axios.post('/api/login', credentials)
+    }catch (ERR){console.log(ERR)}
+};
 
 
 

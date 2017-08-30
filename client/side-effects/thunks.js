@@ -6,7 +6,8 @@ import { getItemsListRequest,
     orderRequest,
     saveItemChangesRequest,
     deleteItemRequest,
-    addItemRequest} from "../requests/requests"
+    addItemRequest,
+    loginRequest} from "../requests/requests"
 
 export const thunkItemsList = () => {
     return (
@@ -78,5 +79,13 @@ export const thunkAddItem = (img, Item) => {
             addItemRequest(dispatch, img, Item);
         }
     )
-}
+};
+
+export const thunkLogin = (credentials)=>{
+    return(
+        (dispatch) => {
+            loginRequest(dispatch, credentials);
+        }
+    )
+};
 
